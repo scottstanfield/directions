@@ -1,0 +1,100 @@
+color-gold = hsl(50,48%,56%)
+
+ul.errors
+  margin-top: 10px
+  
+.transparent
+    background-color rgba(255, 255, 255, 0.3)
+
+header
+    color hsl(50,48%,56%)
+
+.section-directions
+    background url('/img/tile.png') repeat color-gold
+
+body
+    background url('/img/tile.png') repeat color-gold
+
+tbody tr:first-child td 
+    padding-top 3em
+
+.padded-tb
+    padding 30px 0
+
+.padded-b
+    padding-bottom 40px
+
+.padded-t
+    padding-top 30px
+
+.padded
+    padding 20px 30px
+
+.well
+    background-color hsl(51,48%,69%)
+
+.well-white
+    background-color white
+
+.altcolor
+    color #A82A21
+
+.centered
+    text-align center
+
+.filters
+    -webkit-filter sepia(50%)
+
+.gold
+    color darken(gold, 30%)
+        
+.to-upper
+    text-transform: uppercase; 
+
+li
+    font-size 0.8em
+
+// [class*="span"] {background: #EEF; }
+// [class*="span"] [class*="span"] {background: #FEE; }
+
+
+// [class^="span"] {background-color: rgba(255, 0, 0, 0.3); }
+
+@media (min-width: 768px) and (max-width: 979px) 
+    .form-horizontal .control-label
+        float none
+        width auto
+        padding-top 0
+        text-align left
+    .form-horizontal .controls
+        margin-left 0
+    .form-horizontal .control-list
+        padding-top 0
+    .form-horizontal .form-actions
+        padding-right 10px
+        padding-left 10px
+
+@media (max-width: 767px) 
+    .form-horizontal .control-label
+        float none
+        width auto
+        padding-top 0
+        text-align left
+    .form-horizontal .controls
+        margin-left 0
+    .form-horizontal .control-list
+        padding-top 0
+    .form-horizontal .form-actions
+        padding-right 10px
+        padding-left 10px
+
+
+@media (min-width: 768px)
+    .heroimage
+        width 100% 
+        background url('/img/1330AlbinaBack-small.jpg') no-repeat top center color-gold
+
+    img[data-src-large] {
+        content: attr(data-src-large, url)
+    }
+
