@@ -12,7 +12,6 @@ var paths = {
     images:  ['source/img/**/*'],
     css:     ['source/css/**/*.css'],
     jade:    ['source/**/*.jade'],
-    less:    ['source/**/*.less'],
     root:    ['source/root/**']
 };
 
@@ -25,12 +24,6 @@ gulp.task('lint', function() {
     return gulp.src(paths.scripts)
         .pipe($.jshint())
         .pipe($.jshint.reporter('default'));
-});
-
-gulp.task('less', function() {
-    return gulp.src(paths.less)
-        .pipe($.less())
-        .pipe(gulp.dest(dest.build + '/css'));
 });
 
 gulp.task('css', function() {
@@ -110,7 +103,6 @@ gulp.task('connect', $.connect.server({
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(paths.stylus, ['stylus']);
-    gulp.watch(paths.less, ['less']);
     gulp.watch(paths.jade, ['jade']);
 });
 
@@ -118,8 +110,8 @@ gulp.task('watch', function() {
 // % gulp 
 // % gulp debug
 
-gulp.task('default', [ 'root', 'less', 'jade', 'stylus', 'scripts', 'images', 'css']);
-gulp.task('debug', [ 'root', 'less', 'jade', 'stylus', 'scripts', 'images', 'css', 'connect', 'watch']);
+gulp.task('default', [ 'root', 'jade', 'stylus', 'scripts', 'images', 'css']);
+gulp.task('debug', [ 'root', 'jade', 'stylus', 'scripts', 'images', 'css', 'connect', 'watch']);
 
 // gulp.task('default', ['clean'], function() {
 //     console.log("about to start build")
