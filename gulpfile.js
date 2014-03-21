@@ -12,6 +12,7 @@ var paths = {
     images:  ['source/img/**/*'],
     css:     ['source/css/**/*.css'],
     jade:    ['source/**/*.jade'],
+    statics: ['source/statics/**/*'],
     root:    ['source/root/**']
 };
 
@@ -88,6 +89,11 @@ gulp.task('root', function() {
         .pipe(gulp.dest(dest.build))
 });
 
+gulp.task('statics', function() {
+    gulp.src(paths.statics)
+        .pipe(gulp.dest(dest.build + '/statics'));
+});
+
 gulp.task('cache', function() {
     $.cache.clearAll();
 });
@@ -103,6 +109,7 @@ gulp.task('connect', $.connect.server({
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(paths.stylus, ['stylus']);
+    gulp.watch(paths.css, ['css']);
     gulp.watch(paths.jade, ['jade']);
 });
 
@@ -110,8 +117,8 @@ gulp.task('watch', function() {
 // % gulp 
 // % gulp debug
 
-gulp.task('default', [ 'root', 'jade', 'stylus', 'scripts', 'images', 'css']);
-gulp.task('debug', [ 'root', 'jade', 'stylus', 'scripts', 'images', 'css', 'connect', 'watch']);
+gulp.task('default', [ 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css']);
+gulp.task('debug', [ 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css', 'connect', 'watch']);
 
 // gulp.task('default', ['clean'], function() {
 //     console.log("about to start build")
