@@ -9,7 +9,7 @@
   "author": "Scott Stanfield",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "~3.5.x",
+    "gulp": "~3.x",
     "gulp-rename": "~1.2.x",
     "gulp-concat": "~2.1.7",
     "gulp-uglify": "~0.2.1",

@@ -110,6 +110,7 @@ gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(paths.stylus, ['stylus']);
     gulp.watch(paths.css, ['css']);
+    gulp.watch(paths.root, ['root']);
     gulp.watch(paths.jade, ['jade']);
 });
 
