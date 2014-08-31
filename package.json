@@ -14,7 +14,6 @@
     "gulp-cache": "^0.2.1",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.3.4",
-    "gulp-connect": "^2.0.6",
     "gulp-imagemin": "^1.0.1",
     "gulp-jade": "^0.7.0",
     "gulp-jshint": "^1.8.4",
