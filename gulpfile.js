@@ -46,15 +46,13 @@ gulp.task('stylus', function() {
         .pipe(gulp.dest(dest.build))
         .pipe($.rename({suffix: '.min'}))
         .pipe($.minifyCss())
-        .pipe(gulp.dest(dest.build))
-        .pipe($.connect.reload());
+        .pipe(gulp.dest(dest.build));
 });
 
 gulp.task('jade', function() {
     return gulp.src(paths.jade)
         .pipe($.jade({pretty: true}))
-        .pipe(gulp.dest(dest.build))
-        .pipe($.connect.reload());
+        .pipe(gulp.dest(dest.build));
 });
 
 // Concatenate & Minify JS
@@ -64,8 +62,7 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest(dest.build))
         .pipe($.rename('all.min.js'))
         .pipe($.uglify())
-        .pipe(gulp.dest(dest.build))
-        .pipe($.connect.reload());
+        .pipe(gulp.dest(dest.build));
 });
 
 gulp.task('images', function() {
@@ -98,28 +95,28 @@ gulp.task('cache', function() {
     $.cache.clearAll();
 });
 
-
-gulp.task('connect', $.connect.server({
-    root: [dest.build],
-    port: 4000,
-    livereload: true,
-    open: true
-}));
-
-gulp.task('watch', function() {
-    gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.stylus, ['stylus']);
-    gulp.watch(paths.css, ['css']);
-    gulp.watch(paths.root, ['root']);
-    gulp.watch(paths.jade, ['jade']);
+gulp.task('webserver', function() {
+    gulp.src(['build', '!node_modules'])
+        .pipe($.webserver({
+            livereload: true,
+            open: true
+        }));
 });
+
+// gulp.task('watch', function() {
+//     gulp.watch(paths.scripts, ['lint', 'scripts']);
+//     gulp.watch(paths.stylus, ['stylus']);
+//     gulp.watch(paths.css, ['css']);
+//     gulp.watch(paths.root, ['root']);
+//     gulp.watch(paths.jade, ['jade']);
+// });
 
 // these are the two high-level tasks:
 // % gulp 
 // % gulp debug
 
 gulp.task('default', [ 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css']);
-gulp.task('debug', [ 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css', 'connect', 'watch']);
+gulp.task('debug', [ 'webserver', 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css']);
 
 // gulp.task('default', ['clean'], function() {
 //     console.log("about to start build")
