@@ -103,20 +103,20 @@ gulp.task('webserver', function() {
         }));
 });
 
-// gulp.task('watch', function() {
-//     gulp.watch(paths.scripts, ['lint', 'scripts']);
-//     gulp.watch(paths.stylus, ['stylus']);
-//     gulp.watch(paths.css, ['css']);
-//     gulp.watch(paths.root, ['root']);
-//     gulp.watch(paths.jade, ['jade']);
-// });
+gulp.task('watch', function() {
+    gulp.watch(paths.scripts, ['lint', 'scripts']);
+    gulp.watch(paths.stylus, ['stylus']);
+    gulp.watch(paths.css, ['css']);
+    gulp.watch(paths.root, ['root']);
+    gulp.watch(paths.jade, ['jade']);
+});
 
 // these are the two high-level tasks:
 // % gulp 
 // % gulp debug
 
 gulp.task('default', [ 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css']);
-gulp.task('debug', [ 'webserver', 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css']);
+gulp.task('debug', [ 'webserver', 'root', 'statics', 'jade', 'stylus', 'scripts', 'images', 'css', 'watch']);
 
 // gulp.task('default', ['clean'], function() {
 //     console.log("about to start build")
