@@ -7,13 +7,13 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 var paths = {
-    scripts: ['source/js/*.js'],
-    stylus:  ['source/**/*.styl'],
-    images:  ['source/img/**/*'],
-    css:     ['source/css/**/*.css'],
-    jade:    ['source/**/*.jade'],
-    statics: ['source/statics/**/*'],
-    root:    ['source/root/**']
+    scripts: ['src/js/*.js'],
+    stylus:  ['src/**/*.styl'],
+    images:  ['src/img/**/*'],
+    css:     ['src/css/**/*.css'],
+    jade:    ['src/**/*.jade'],
+    statics: ['src/statics/**/*'],
+    root:    ['src/root/**']
 };
 
 var dest = {
