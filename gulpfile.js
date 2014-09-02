@@ -4,6 +4,8 @@
 // https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
 
 var gulp = require('gulp');
+var beep = require('beepbeep');
+var colors = require('colors');
 var $ = require('gulp-load-plugins')();
 
 var paths = {
@@ -18,6 +20,11 @@ var paths = {
 
 var dest = {
     build:  'build'
+};
+
+var onError = function(err) {
+    beep();
+    console.log('⍨'.bold.red + ' ' + err);
 };
 
 // Lint Task
@@ -51,6 +58,11 @@ gulp.task('stylus', function() {
 
 gulp.task('jade', function() {
     return gulp.src(paths.jade)
+        .pipe($.plumber({errorHandler: onError }))
+        // .pipe($.plumber(function() {
+        //     console.log('Error compiling Jade');
+        //     this.emit('end');
+        // }))
         .pipe($.jade({pretty: true}))
         .pipe(gulp.dest(dest.build));
 });

@@ -9,6 +9,8 @@
   "author": "Scott Stanfield",
   "license": "MIT",
   "devDependencies": {
+    "beepbeep": "^1.2.0",
+    "colors": "^0.6.2",
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.10",
     "gulp-cache": "^0.2.1",
@@ -19,6 +21,7 @@
     "gulp-jshint": "^1.8.4",
     "gulp-load-plugins": "^0.6.0",
     "gulp-minify-css": "^0.3.7",
+    "gulp-plumber": "^0.6.5",
     "gulp-rename": "^1.2.0",
     "gulp-rev-all": "^0.6.4",
     "gulp-size": "^1.0.0",
