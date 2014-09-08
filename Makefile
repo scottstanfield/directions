@@ -5,7 +5,6 @@ debug:
 	gulp debug
 
 clean:
-	@echo Removing the "build" folder
-	@rm -rf build
+	glup clean
 
 .PHONY: release
