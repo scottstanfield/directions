@@ -1,7 +1,5 @@
 #In One Ear
-##by Cage the Elephant
-
-
+##by Cage the Elephant 
 
 <br>
 <br>

@@ -48,6 +48,7 @@ gulp.task('revall', function() {
 // Compile Our Stylus files
 gulp.task('stylus', function() {
     return gulp.src(paths.stylus)
+        .pipe($.plumber({errorHandler: onError }))
         .pipe($.stylus())
         .pipe($.autoprefixer())
         .pipe(gulp.dest(dest.build))
@@ -59,10 +60,6 @@ gulp.task('stylus', function() {
 gulp.task('jade', function() {
     return gulp.src(paths.jade)
         .pipe($.plumber({errorHandler: onError }))
-        // .pipe($.plumber(function() {
-        //     console.log('Error compiling Jade');
-        //     this.emit('end');
-        // }))
         .pipe($.jade({pretty: true}))
         .pipe(gulp.dest(dest.build));
 });
@@ -70,6 +67,7 @@ gulp.task('jade', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src(paths.scripts)
+        .pipe($.plumber({errorHandler: onError }))
         .pipe($.concat('all.js'))
         .pipe(gulp.dest(dest.build))
         .pipe($.rename('all.min.js'))
@@ -79,18 +77,22 @@ gulp.task('scripts', function() {
 
 gulp.task('images', function() {
     return gulp.src(paths.images)
-        .pipe($.cache($.imagemin({
-            optimizationLevel: 7,
-            progressive: true,
-            interlaced: true
-        })))
+        // commenting out imagemin for now since the npm install takes so long
+        // as it compiles some files from source
+        // to get it back: npm install --save-dev imagemin
+        //
+        // .pipe($.cache($.imagemin({
+        //     optimizationLevel: 7,
+        //     progressive: true,
+        //     interlaced: true
+        // })))
         .pipe(gulp.dest(dest.build + '/img'))
         .pipe($.size());
 });
 
 gulp.task('clean', function() {
     gulp.src(dest.build, {read:false})
-        .pipe($.clean());
+        .pipe($.rimraf());
 });
 
 gulp.task('root', function() {
