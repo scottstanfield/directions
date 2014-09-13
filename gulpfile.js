@@ -130,6 +130,7 @@ gulp.task('watch', function() {
 
 gulp.task('articles', function(){
    return gulp.src(paths.articles)
+        .pipe($.plumber({errorHandler: onError }))
         .pipe($.frontMatter({property: 'data', remove: true}))
         .pipe($.marked())
         .pipe(utils._summarize('<!--more-->'))

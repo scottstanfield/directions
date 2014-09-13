@@ -3,11 +3,17 @@ fileTitle: ArticleNumOne
 title: Article Number One
 author: Matt Talbot
 tags: 
-    - test
+    - ps4
     - awesome
 ---
 
-#ArticleOne
+#Xbox for TWC
+
+Vertigo did this:
+* cool stuff 
+* it shipped
+
+>> Quote from customer
 
 This is the articles content. 
 
