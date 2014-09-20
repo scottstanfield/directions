@@ -1,26 +1,36 @@
 doctype html
 html(lang='en')
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='description', content='')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    title Canonical
+        title Canonical
 
-    link(rel='stylesheet', href='./css/normalize.css')
-    link(rel='stylesheet', href='./css/main.css')
-    link(rel='stylesheet', href='./css/custom.css')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:400')
 
-  body
+        link(rel='stylesheet', href='./css/normalize.css')
+        link(rel='stylesheet', href='./css/main.css')
+        link(rel='stylesheet', href='./css/custom.css')
 
-    h1 Gulp & Jade and
-        a(href='hunter.html') hunter
-    p Using livereload and gulp-webserver
+    body
 
-    a(href='lyrics.html') lyrics
+        article Hello David and Ben
+            p and the first paragraph
+            p and the second paragraph
 
+        :markdown(smartypants=true)
+            ## Before You Start--You Need
 
+            * A "remote" web server to host your site.
+            * SSH access to your remote server ben...
+            * Git installed on your remote server (check with git --version).
 
-
+        script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
+        script(src='/js/all.js')
+    
+    body
+        h1 Jade - node template engine
+        p enjoy!
 
