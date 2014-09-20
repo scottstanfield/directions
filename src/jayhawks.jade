@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    title Canonical
+
+    link(rel='stylesheet', href='./css/normalize.css')
+    link(rel='stylesheet', href='./css/main.css')
+    link(rel='stylesheet', href='./css/custom.css')
+
+  body
+
+    h2 A simple Git deployment--strategy for static sites
+    p.
+        This is how I am "deploying" the build of my static website to staging
+        and production domains. It requires basic use of the CLI, Git and SSH.
+        But once you're set up, a single command will build and deploy.
+
+    p.
+        TL;DR Push the static build to a remote, bare repository that has a 
+        detached working directory (on the same server). A post-receive hook
+        checks out the files in the public directory.
+
+    :markdown(smartypants=true)
+        ## Before You Start--You Need
+
+        * A "remote" web server to host your site.
+        * SSH access to your remote server...
+        * Git installed on your remote server (check with git --version).
+
+    h2 Ligature Test
+    p Afflicted, finally by affine curves
+
+    h2 Untypogrified
+
+    h1 "Jayhawks" & KU fans act extremely&nbsp;obnoxiously
+    p H.T. Melville
+    p In the Propontis, as far as I can learn, none of that peculiar substance called BRIT is to be found, the aliment of the right whale. But I have every reason to believe that the food of the sperm whale—squid or cuttle-fish—lurks at the bottom of that sea, because large creatures, but by no means the largest of that sort, have been found at its surface. If, then, you properly put these statements together, and reason upon them a bit, you will clearly perceive that, according to all human reasoning, Procopius's sea-monster, that for half a century stove the ships of a Roman Emperor, must in all probability have been a sperm&nbsp;whale.
+    a(href='lyrics.html') lyrics
+
+
+
+
+
