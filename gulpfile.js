@@ -54,6 +54,7 @@ gulp.task('stylus', function() {
         .pipe($.plumber({errorHandler: onError }))
         .pipe($.stylus())
         .pipe($.autoprefixer())
+        .pipe($.header('/* Copyright 2014 Scott Stanfield */\n'))
         .pipe(gulp.dest(dest.build))
         .pipe($.rename({suffix: '.min'}))
         .pipe($.minifyCss())
@@ -72,10 +73,10 @@ gulp.task('scripts', function() {
     return gulp.src(paths.scripts)
         .pipe($.plumber({errorHandler: onError }))
         .pipe($.concat('all.js'))
-        .pipe(gulp.dest(dest.build))
+        .pipe(gulp.dest(dest.build + '/js'))
         .pipe($.rename('all.min.js'))
         .pipe($.uglify())
-        .pipe(gulp.dest(dest.build));
+        .pipe(gulp.dest(dest.build + '/js'));
 });
 
 gulp.task('images', function() {
@@ -121,7 +122,7 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(paths.scripts, ['lint', 'scripts']);
+    gulp.watch(paths.scripts, ['scripts']);
     gulp.watch(paths.stylus, ['stylus']);
     gulp.watch(paths.css, ['css']);
     gulp.watch(paths.articles, ['articles']);
@@ -132,7 +133,7 @@ gulp.task('articles', function(){
    return gulp.src(paths.articles)
         .pipe($.plumber({errorHandler: onError }))
         .pipe($.frontMatter({property: 'data', remove: true}))
-        .pipe($.marked())
+        .pipe($.marked({smartypants: true}))
         .pipe(utils._summarize('<!--more-->'))
         .pipe(utils._filenameToDate())
         .pipe(utils._collectArticles())
