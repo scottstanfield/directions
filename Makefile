@@ -5,6 +5,6 @@ debug:
 	gulp debug
 
 clean:
-	glup clean
+	gulp clean
 
 .PHONY: release
