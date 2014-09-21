@@ -15,7 +15,7 @@ var paths = {
     stylus:  ['src/**/*.styl'],
     images:  ['src/img/**/*'],
     css:     ['src/css/**/*.css'],
-    sass:    ['src/css/**/*.sass', 'src/css/**/*.scss'],
+    sass:    ['src/css/*.sass', 'src/css/*.scss', '!src/css/ug.scss'],
     jade:    ['src/**/*.jade'],
     jadePages:    ['src/**/*.jade', '!src/partials/*.jade'],
     statics: ['src/statics/**/*'],
@@ -67,7 +67,10 @@ gulp.task('sass', function() {
     return gulp.src(paths.sass)
         .pipe(gulp.dest(dest.build))       // temp copy for sourcemaps
         .pipe($.plumber({errorHandler: onError }))
-        .pipe(sass({sourcemapPath: '.', noCache: true, style:'compact'}))
+        .pipe(sass({sourcemapPath: '.', 
+            noCache: true, 
+            loadPath: 'src/css',
+            style:'compact'}))
 //        .pipe($.autoprefixer())
         .pipe(gulp.dest(dest.build + '/css'));
 });
