@@ -8,12 +8,14 @@ var beep = require('beepbeep');
 var colors = require('colors');
 var $ = require('gulp-load-plugins')();
 var config = require('./src/config.json');
+var sass = require('gulp-ruby-sass');
 
 var paths = {
     scripts: ['src/js/*.js'],
     stylus:  ['src/**/*.styl'],
     images:  ['src/img/**/*'],
     css:     ['src/css/**/*.css'],
+    sass:    ['src/css/**/*.sass', 'src/css/**/*.scss'],
     jade:    ['src/**/*.jade'],
     jadePages:    ['src/**/*.jade', '!src/partials/*.jade'],
     statics: ['src/statics/**/*'],
@@ -59,6 +61,15 @@ gulp.task('stylus', function() {
         .pipe($.rename({suffix: '.min'}))
         .pipe($.minifyCss())
         .pipe(gulp.dest(dest.build));
+});
+
+gulp.task('sass', function() {
+    return gulp.src(paths.sass)
+        .pipe(gulp.dest(dest.build))       // temp copy for sourcemaps
+        .pipe($.plumber({errorHandler: onError }))
+        .pipe(sass({sourcemapPath: '.', noCache: true, style:'compact'}))
+//        .pipe($.autoprefixer())
+        .pipe(gulp.dest(dest.build + '/css'));
 });
 
 gulp.task('jade', function() {
@@ -124,6 +135,7 @@ gulp.task('webserver', function() {
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['scripts']);
     gulp.watch(paths.stylus, ['stylus']);
+    gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.css, ['css']);
     gulp.watch(paths.articles, ['articles']);
     gulp.watch(paths.jade, ['jade']);
@@ -140,8 +152,8 @@ gulp.task('articles', function(){
         .pipe(utils._convertToHtml());
 });
 
-gulp.task('default', [ 'articles', 'stylus', 'scripts', 'images', 'css']);
-gulp.task('debug', [ 'webserver',  'articles', 'stylus', 'scripts', 'images', 'css', 'watch']);
+gulp.task('default', [ 'articles', 'sass', 'stylus', 'scripts', 'images', 'css']);
+gulp.task('debug', [ 'webserver',  'articles', 'sass', 'stylus', 'scripts', 'images', 'css', 'watch']);
 
 
 var regexPostName   = /(\d{4})-(\d{1,2})-(\d{1,2})-(.*)/;

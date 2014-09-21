@@ -1,0 +1,9 @@
+$blue: #3bbfce;
+$margin: 16px;
+
+.content {
+  background: green;
+  border-color: $blue;
+  color: 
+    darken($blue, 9%);
+}
