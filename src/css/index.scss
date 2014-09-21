@@ -35,6 +35,12 @@ header      { @include grid-unit($font-size: 1.5, $margin-top: 1, $margin-bottom
 #sectionB   { @include grid-unit(); }
 footer      { @include grid-unit($font-size: 0.8, $margin-top: 1, $margin-bottom: 1); }
 
+#sectionB {
+    font-family: Georgia;
+    font-style: italic;
+    max-width: 15rem;
+}
+
 header {
     text-align: center;
 }
