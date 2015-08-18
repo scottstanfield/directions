@@ -148,7 +148,7 @@ gulp.task('articles', function(){
    return gulp.src(paths.articles)
         .pipe($.plumber({errorHandler: onError }))
         .pipe($.frontMatter({property: 'data', remove: true}))
-        .pipe($.marked({smartypants: true}))
+        .pipe($.markdown({smartypants: true}))
         .pipe(utils._summarize('<!--more-->'))
         .pipe(utils._filenameToDate())
         .pipe(utils._collectArticles())
