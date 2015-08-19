@@ -1,6 +1,6 @@
 'use strict';
 
-// Note: use this Chrome plugin to enable the Live Reload feature:
+// Note: install this Chrome plugin to enable the auto-refresh feature
 // https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
 
 var gulp = require('gulp');
@@ -9,6 +9,7 @@ var colors = require('colors');
 var $ = require('gulp-load-plugins')();
 var config = require('./src/config.json');
 var sass = require('gulp-ruby-sass');
+var del = require('del');
 
 var paths = {
     scripts: ['src/js/*.js'],
@@ -108,20 +109,9 @@ gulp.task('images', function() {
         .pipe($.size());
 });
 
-gulp.task('clean', function() {
-    gulp.src(dest.build, {read:false})
-        .pipe($.rimraf());
+gulp.task('clean', function(cb) {
+    del([dest.build], cb);
 });
-
-// gulp.task('root', function() {
-//     gulp.src(paths.root)
-//         .pipe(gulp.dest(dest.build))
-// });
-
-// gulp.task('statics', function() {
-//     gulp.src(paths.statics)
-//         .pipe(gulp.dest(dest.build + '/statics'));
-// });
 
 gulp.task('cache', function() {
     $.cache.clearAll();
@@ -148,7 +138,7 @@ gulp.task('articles', function(){
    return gulp.src(paths.articles)
         .pipe($.plumber({errorHandler: onError }))
         .pipe($.frontMatter({property: 'data', remove: true}))
-        .pipe($.marked({smartypants: true}))
+        .pipe($.markdown({smartypants: true}))
         .pipe(utils._summarize('<!--more-->'))
         .pipe(utils._filenameToDate())
         .pipe(utils._collectArticles())
